@@ -31,9 +31,6 @@ function updateActiveCard() {
 // Listen to scroll events on the carousel
 if (servicesCarousel) {
     servicesCarousel.addEventListener('scroll', updateActiveCard);
-    // Initialize on load
-    window.addEventListener('load', updateActiveCard);
-    updateActiveCard();
 }
 
 // Card click interaction for mobile - allow clicking to manually activate
