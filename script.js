@@ -164,6 +164,8 @@ const appointmentData = {
 document.addEventListener('DOMContentLoaded', () => {
     // On service selection page (index.html)
     const serviceCards = document.querySelectorAll('.card:not(.size-card)');
+    const continueBtn = document.getElementById('continueBtn');
+    
     serviceCards.forEach(card => {
         card.addEventListener('click', () => {
             // Remove active class from all service cards
@@ -174,11 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const serviceName = card.querySelector('.card-badge').textContent;
             localStorage.setItem('selectedService', serviceName);
+            
+            // Enable continue button
+            if (continueBtn) {
+                continueBtn.classList.remove('disabled');
+                continueBtn.href = './size.html';
+            }
         });
     });
 
     // On size selection page (size.html)
     const sizeCards = document.querySelectorAll('.size-card');
+    const continueSizeBtn = document.getElementById('continueSizeBtn');
+    
     sizeCards.forEach(card => {
         card.addEventListener('click', () => {
             // Remove active class from all size cards
@@ -194,6 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const service = localStorage.getItem('selectedService');
             const price = calculatePrice(service, sizeName);
             localStorage.setItem('selectedPrice', price);
+            
+            // Enable continue button
+            if (continueSizeBtn) {
+                continueSizeBtn.classList.remove('disabled');
+                continueSizeBtn.href = './summary.html';
+            }
         });
     });
 
@@ -254,7 +270,7 @@ function displaySummary() {
         };
         
         // Update Schedule Appointment button with correct Setmore link
-        const scheduleBtn = document.querySelector('.cta-button[href*="schedule"]');
+        const scheduleBtn = document.getElementById('scheduleBtn');
         if (scheduleBtn && setmoreLinks[service]?.[size]) {
             scheduleBtn.href = setmoreLinks[service][size];
         }
