@@ -1,7 +1,9 @@
-// Auto-activate card on scroll for mobile
+// Auto-activate card on scroll for mobile - DISABLED (click only)
 const servicesCarousel = document.querySelector('.card-box');
 const cards = document.querySelectorAll('.card');
 function updateActiveCard() {
+    // Disabled - cards only activate on click now
+    /*
     if (window.innerWidth < 768 && servicesCarousel) {
         const containerCenter = servicesCarousel.scrollLeft + (servicesCarousel.clientWidth / 2);
         
@@ -26,12 +28,15 @@ function updateActiveCard() {
             closestCard.classList.add('active');
         }
     }
+    */
 }
 
-// Listen to scroll events on the carousel
+// Listen to scroll events on the carousel - DISABLED
+/*
 if (servicesCarousel) {
     servicesCarousel.addEventListener('scroll', updateActiveCard);
 }
+*/
 
 // Card click interaction for mobile - allow clicking to manually activate
 cards.forEach(card => {
